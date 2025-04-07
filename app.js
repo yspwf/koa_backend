@@ -5,6 +5,7 @@ register('./promotion');
 const { logInfo, logError } = require("./library/log");
 
 const HttpException = require('./httpError');
+const getLocalIp = require('./localIp');
 
 use(
   async (ctx, next)=>{
@@ -17,6 +18,7 @@ use(
       // });
 
       logError("请求异常", error, {
+        localIp: getLocalIp(),
         method: ctx.method,
         url: ctx.url,
         status: ctx.status || 500,

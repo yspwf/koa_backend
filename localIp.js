@@ -16,7 +16,7 @@ const list = os.networkInterfaces();
 
 
 // 遍历网络接口，获取有效的 IPv4 地址
-const getLocalIP = () => {
+module.exports = () => {
   for (let interfaceName in list) {
     for (let interfaceDetails of list[interfaceName]) {
       // 检查是否为 IPv4 地址，并且是局域网地址
@@ -27,5 +27,5 @@ const getLocalIP = () => {
   }
   return null;  // 如果没有找到合适的 IP 地址
 }
-console.log(getLocalIP())
+
 

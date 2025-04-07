@@ -15,6 +15,7 @@ module.exports = class productController {
 
   getProduct(ctx){
     
+    const a = b;
     // throw error;
     console.log(ctx.params)
     // try{
