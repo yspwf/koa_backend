@@ -1,0 +1,25 @@
+{
+  "name": "hi.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon ./app.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "cls-hooked": "^4.2.2",
+    "koa": "^2.16.0",
+    "koa-body": "^6.0.1",
+    "koa-helmet": "^8.0.1",
+    "koa-router": "^13.0.1",
+    "mysql2": "^3.13.0",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
