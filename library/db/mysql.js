@@ -1,10 +1,17 @@
 const mysqlClient = require('mysql2');
 
 const entryPath = process.cwd();
-const config = require(`${entryPath}/config.js`);
-const {mysql} = config;
+const config = require(`${process.env.corePath}/config.js`);
+const {host, port, user, password, database} = config.mysql;
 
-const connection = mysqlClient.createConnection(mysql);
+const connection = mysqlClient.createConnection({
+  'host': process.env.DB_HOST ?? host, 
+  'port': process.env.DB_PORT ?? port,
+  'user': process.env.DB_USER ?? user, 
+  'password': process.env.DB_PWD ?? password, 
+  'database': process.env.DB_NAME ?? database, 
+});
+
 connection.connect((err) => {
   // console.log('mysql connect fail')
   if (err) { console.error('连接数据库失败:', err.stack); return; }

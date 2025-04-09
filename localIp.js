@@ -20,7 +20,7 @@ module.exports = () => {
   for (let interfaceName in list) {
     for (let interfaceDetails of list[interfaceName]) {
       // 检查是否为 IPv4 地址，并且是局域网地址
-      if (interfaceDetails.family === 'IPv4' && !interfaceDetails.internal) {
+      if (interfaceDetails.family === 'IPv4' && interfaceDetails.address !== '127.0.0.1' && !interfaceDetails.internal) {
         return interfaceDetails.address;
       }
     }

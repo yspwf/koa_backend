@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon ./app.js"
+    "dev": "export NODE_ENV=dev && nodemon ./app.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@koa/cors": "^5.0.0",
     "axios": "^1.8.4",
     "cls-hooked": "^4.2.2",
+    "dotenv": "^16.4.7",
     "koa": "^2.16.0",
     "koa-body": "^6.0.1",
     "koa-helmet": "^8.0.1",

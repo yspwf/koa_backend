@@ -9,13 +9,22 @@ module.exports = class productController {
   
 
   home(ctx){
+    // throw new Error('An error occurred'); // 抛出错误
+    // ctx.throw(500);
+    setTimeout(() => {
+      throw new Error('突发错误！');
+    }, 1000);
+    ctx.body = 'product controller';
+  }
+
+  homelist(ctx){
+    console.log("===========homelist=========")
+    const a = b;
     ctx.body = 'product controller';
   }
 
 
   getProduct(ctx){
-    
-    const a = b;
     // throw error;
     console.log(ctx.params)
     // try{

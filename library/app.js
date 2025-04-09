@@ -52,8 +52,13 @@ app.use(async (ctx, next)=>{
   }
 })
 
-app.on('error', (error) => {
-  console.log(error);
-})
+// app.on('error', (error) => {
+//   console.log(error);
+// })
+
+app.on('error', (err, ctx) => {
+  console.error('server error', err);
+  ctx.body = { message: err.message };
+});
 
 module.exports = app;

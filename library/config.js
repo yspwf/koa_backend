@@ -1,10 +1,10 @@
 module.exports = {
-  port: 8096,
+  defatutPort: 8096,
   mysql: {
-    host: '124.220.147.141',
+    host: '127.0.0.1',
     port: '3306',
     user: 'ysp123',
     password: 'ysp123',
-    database: 'shop_mall',
+    database: '',
   }
 }

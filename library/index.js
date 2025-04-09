@@ -1,5 +1,6 @@
 const path = require('node:path');
 const corePath = path.join(__dirname, '.');
+process.env.corePath = path.join(__dirname, '.');
 const entryPath = process.cwd();
 
 const app = require(`${corePath}/app`);
@@ -7,8 +8,12 @@ const app = require(`${corePath}/app`);
 const router = require(`${corePath}/router`);
 exports.router = router;
 
-const config = require(`${entryPath}/config.js`);
-const {port} = config;
+console.log(`${corePath}/config`)
+const config = require(`${corePath}/config.js`);
+const { defatutPort } = config;
+// const port = process.env.SERVER_PORT;
+// console.log(port);
+
 
 const { readDir, loaderFile} = require(`${corePath}/loaderUtile`);
 
@@ -66,8 +71,12 @@ const bootstrap = (fn) => {
 
     fn && fn();
     app.use(router.routes()).use(router.allowedMethods());
-    const server = app.listen(port, () => {
-      console.log(`server is starting with port: ${port}`)
+  })
+
+  return (port) => {
+
+    const server = app.listen(8096, () => {
+      console.log(`server is starting with port: ${port || defatutPort}`)
     })
 
     process.on('SIGINT', async () => {
@@ -78,6 +87,7 @@ const bootstrap = (fn) => {
       });
       // process.exit(0);
     });
+
     process.on('SIGTERM', async () => {
       console.log('Received SIGTERM. Gracefully shutting down all components...');
       server.close(() => {
@@ -86,8 +96,7 @@ const bootstrap = (fn) => {
       });
       // process.exit(0);
     })
-
-  })
+  }
 }
 
 exports.bootstrap = bootstrap;
